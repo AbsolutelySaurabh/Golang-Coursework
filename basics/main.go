@@ -5,7 +5,10 @@ If we do not use "main", we'll not get the executable code.
 */
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+)
 
 func main() {
 	fmt.Println("Hey!!")
@@ -53,6 +56,46 @@ func main() {
 	cards2 := deck{"Diamonds", "Aces", "Knights"}
 	cards2 = append(cards2, "Bishop")
 	cards2.print()
+
+	//creating a new deck
+	cards3 := newDeck()
+	cards3.print()
+
+	/*
+		Multiple return values
+	*/
+	c1, c2 := deal(cards3, 5)
+	fmt.Print(c1)
+	fmt.Print(c2)
+
+	/*
+		Joining as slice f strings and Byte Slices
+	*/
+	//making a new deck
+	cards4 := newDeck()
+	fmt.Println()
+	fmt.Println(cards4.toString())
+
+	/*
+		Writing to a file
+	*/
+	cards5 := newDeck()
+	cards5.saveToFile("my_deck")
+
+}
+
+/*
+	Writing to a File.
+*/
+func (d deck) saveToFile(filename string) error {
+
+	/*
+		WriteFile takes parameters as :
+		1. filename
+		2. []byte slice
+		3. write permission which is 0666 by default
+	*/
+	return ioutil.WriteFile(filename, []byte(d.toString()), 0666)
 
 }
 
