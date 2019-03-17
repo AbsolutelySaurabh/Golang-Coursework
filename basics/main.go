@@ -7,7 +7,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 )
 
 func main() {
@@ -82,20 +81,11 @@ func main() {
 	cards5 := newDeck()
 	cards5.saveToFile("my_deck")
 
-}
-
-/*
-	Writing to a File.
-*/
-func (d deck) saveToFile(filename string) error {
-
 	/*
-		WriteFile takes parameters as :
-		1. filename
-		2. []byte slice
-		3. write permission which is 0666 by default
+		Reading from a file
 	*/
-	return ioutil.WriteFile(filename, []byte(d.toString()), 0666)
+	cards6 := newDeckFromFile("my_deck")
+	cards6.print()
 
 }
 

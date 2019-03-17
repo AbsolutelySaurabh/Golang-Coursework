@@ -1,0 +1,7 @@
+Things covered in this basics:
+
+1. Type conversions, variable declaration and initialization
+2. for loop, if conditin
+3. Arrays and Slices
+4. Iterating over slices and arrays.
+5. Fuctions, Receivers and return types.
