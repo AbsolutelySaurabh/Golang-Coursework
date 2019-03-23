@@ -26,6 +26,10 @@ func (c Color) String() string{
 	return colors[c]
 }
 
+func (b *Box) setColor(){
+	b.color = 1;
+}
+
 func main(){
 
 	boxes := BoxList{
@@ -34,8 +38,11 @@ func main(){
 		Box{16, 17, 18, YELLOW},
 	}
 
-	fmt.Println("We have %d boxes in our set.", len(boxes))
+	fmt.Printf("We have %d boxes in our set.\n", len(boxes))
 	fmt.Println("The volume of the first one is: ",boxes[0].volume());
-	fmt.Println("The color of the last box is: ", boxes[len(boxes)-1].color)
+	fmt.Println("The color of the last box is: ", boxes[len(boxes)-1].color.String())
+
+	boxes[0].setColor();
+	fmt.Println("The first color changed to: ", boxes[0].color.String());
 
 }
